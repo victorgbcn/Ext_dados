@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import smtplib
 from email.message import EmailMessage
 import os
+from dotenv import load_dotenv
 
 # Função para tentativa de acesso
 def tentar_acessar_site(url, tentativas=3):
@@ -137,11 +138,15 @@ def enviar_email(caminho_anexo, senha_email):
         smtp.login("victorgc.nicolau@gmail.com", senha_email)  # Senha lida do arquivo
         smtp.send_message(msg)
 
-# Caminho para o arquivo de senha
-caminho_arquivo_senha = "senha.txt"
 
-# Ler a senha do arquivo
-senha_email = ler_senha_arquivo(caminho_arquivo_senha)
+# Carregar variáveis de ambiente do arquivo .env
+load_dotenv()
+
+# Obter a senha do e-mail de forma segura
+senha_email = os.getenv("EMAIL_SENHA")
+
+
+
 
 if senha_email is None:
     print("Erro: A senha não foi carregada corretamente.")
