@@ -117,8 +117,8 @@ def enviar_email(caminho_anexo, senha_email):
     # Função para criar mensagem de e-mail
     msg = EmailMessage()
     msg["Subject"] = "Relatório Notebooks"
-    msg["From"] = "victorgc.nicolau@gmail.com"
-    msg["To"] = "victorgc.nicolau@gmail.com"
+    msg["From"] = "email@gmail.com"
+    msg["To"] = "email@gmail.com"
 
     # Corpo do e-mail
     msg.set_content("""
@@ -135,7 +135,7 @@ def enviar_email(caminho_anexo, senha_email):
     # Cria uma conexão com o servidor SMTP do Gmail
     with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
         smtp.starttls()
-        smtp.login("victorgc.nicolau@gmail.com", senha_email)  # Senha lida do arquivo
+        smtp.login("email@gmail.com", senha_email)  # Senha lida do arquivo
         smtp.send_message(msg)
 
 
